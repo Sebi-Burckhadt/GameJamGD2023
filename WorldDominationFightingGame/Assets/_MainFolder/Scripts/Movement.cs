@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    public string horizontal;
+    public string vertical;
     public bool isPlayer1;
     Vector3 newPosition;
     Vector3 v1;
@@ -25,24 +27,37 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (isPlayer1)
-        {
-            PlayerOneMovement();
-        }
-        else
-        {
-            PlayerTwoMovement();
-            
-        }
-        transform.position = newPosition;
+        PlayerMovement();
+        
+        //transform.position = newPosition;
     }
 
-    public void PlayerOneMovement()
+    public void PlayerMovement()
     {
-        x1 = Input.GetAxis("Horizontal1");
-        z1 = Input.GetAxis("Vertical1");
-        newPosition.x += x1 * speed * Time.deltaTime;
-        newPosition.z += z1 * speed * Time.deltaTime;
+        x1 = Input.GetAxis(horizontal);
+        z1 = Input.GetAxis(vertical);
+
+        //assuming we only using the single camera:
+        var camera = Camera.main;
+
+        //camera forward and right vectors:
+        var forward = camera.transform.forward;
+        var right = camera.transform.right;
+
+
+        //camera forward and right vectors:
+        forward.y = 0f;
+        right.y = 0f;
+        forward.Normalize();
+        right.Normalize();
+
+        var desiredMoveDirection = forward * z1 + right * x1;
+        transform.Translate(desiredMoveDirection * speed * Time.deltaTime);
+        //newPosition.x += x1 * speed * Time.deltaTime;
+        //newPosition.z += z1 * speed * Time.deltaTime;
+
+        //transform.rotation = Quaternion.LookRotation(desiredMoveDirection);
+
         v1 = new Vector3(x1, 0f, z1);
         if (x1 != 0 || z1 != 0)
         {
@@ -50,18 +65,6 @@ public class Movement : MonoBehaviour
         }
     }
 
-    public void PlayerTwoMovement()
-    {
-        x2 = Input.GetAxis("Horizontal2");
-        z2 = Input.GetAxis("Vertical2");
-        newPosition.x += x2 * speed * Time.deltaTime;
-        newPosition.z += z2 * speed * Time.deltaTime;
-
-        v2 = new Vector3(x2, 0f, z2);
-        if (x2 != 0 || z2 != 0)
-        {
-            playerGraphics.transform.localRotation = Quaternion.RotateTowards(playerGraphics.transform.rotation, Quaternion.LookRotation(v2), rotationSpeed);
-        }
-    }
+    
 
 }
