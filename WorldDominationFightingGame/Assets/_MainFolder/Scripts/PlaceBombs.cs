@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlaceBombs : MonoBehaviour
 {
+    public bool canPlaceBomb;
     public Explode explode;
     public GameObject cursor;
     public Vector3 newPosition;
@@ -18,6 +19,7 @@ public class PlaceBombs : MonoBehaviour
     {
         newPosition = transform.position;
         timer = loadTime;
+        bombSlider.maxValue = loadTime;
     }
 
     // Update is called once per frame
@@ -42,20 +44,23 @@ public class PlaceBombs : MonoBehaviour
         if(timer > 0)
         {
             timer -= Time.deltaTime;
-            bombSlider.value = 1 - timer;
+            bombSlider.value = loadTime - timer;
         }
 
-        
 
-        if (Input.GetMouseButtonDown(0))
+        if (canPlaceBomb)
         {
-            if(timer<= 0)
+            if (Input.GetMouseButtonDown(0))
             {
-                explode.LaunchRocket();
-                timer = loadTime;
+                if (timer <= 0)
+                {
+                    explode.LaunchRocket();
+                    timer = loadTime;
+                }
+
             }
-           
         }
+        
     }
     void ThrowRayCast()
     {

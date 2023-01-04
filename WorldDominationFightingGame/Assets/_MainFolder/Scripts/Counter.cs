@@ -12,9 +12,9 @@ public class Counter : MonoBehaviour
     int s1;
     int s2;
     int s3;
-    float s1Percent;
-    float s2Percent;
-    float s3Percent;
+    public float s1Percent;
+    public float s2Percent;
+    public float s3Percent;
     float newMaxAmount;
     public TextMeshProUGUI text1;
     public TextMeshProUGUI text2;
@@ -50,9 +50,9 @@ public class Counter : MonoBehaviour
         s2Percent = ((s2 + 0f)/ newMaxAmount) * 100f;
         s3Percent = ((s3 + 0f)/ newMaxAmount) * 100f;
 
-        text1.text = "Red Player: " + s1Percent.ToString("F2") + "%";
-        text2.text = "Blue Player: " + s2Percent.ToString("F2") + "%";
-        text3.text = "Yellow Player: " + s3Percent.ToString("F2") + "%";
+        text1.text = "Human: " + s1Percent.ToString("F2") + "%";
+        text2.text = "Whale: " + s2Percent.ToString("F2") + "%";
+        text3.text = "Insect: " + s3Percent.ToString("F2") + "%";
 
         //calculate with of panel that the width doesnt fall below the minWidth(250px) the three dont exeed the maxwidth+250*3
         panel1.sizeDelta = new Vector2(((fullWidth / 100) * s1Percent) + minWidth, heightPanel);

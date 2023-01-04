@@ -24,7 +24,7 @@ public class Movement : MonoBehaviour
     Movement movementScript;
     private void Start()
     {
-        canMove = true;
+        //canMove = true;
             newPosition = transform.position;
         
         
