@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    public float repelForce = 50;
+    public bool canMove;
     public string horizontal;
     public string vertical;
     //public bool isPlayer1;
@@ -19,16 +21,24 @@ public class Movement : MonoBehaviour
     float z1;
     float x2;
     float z2;
+    Movement movementScript;
     private void Start()
     {
-        newPosition = transform.position;
+        canMove = true;
+            newPosition = transform.position;
+        
+        
         
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        PlayerMovement();
+        if (canMove)
+        {
+            PlayerMovement();
+        }
+        
         
         //transform.position = newPosition;
     }
@@ -75,9 +85,11 @@ public class Movement : MonoBehaviour
         {
             // Apply a force to the other collider
             Rigidbody otherRigidbody = collision.gameObject.GetComponent<Rigidbody>();
+            movementScript = collision.gameObject.GetComponent<Movement>();
+            movementScript.canMove = false;
             otherRigidbody.isKinematic = false;
             Vector3 forceDirection = otherRigidbody.transform.position - transform.position;
-            otherRigidbody.AddForce(forceDirection * 10f, ForceMode.Impulse);
+            otherRigidbody.AddForce(forceDirection * repelForce, ForceMode.Impulse);
         }
     }
 
@@ -87,6 +99,8 @@ public class Movement : MonoBehaviour
         {
             Rigidbody otherRigidbody = other.gameObject.GetComponent<Rigidbody>();
             otherRigidbody.isKinematic = true;
+            movementScript = other.gameObject.GetComponent<Movement>();
+            movementScript.canMove = true;
         }
     }
 }
