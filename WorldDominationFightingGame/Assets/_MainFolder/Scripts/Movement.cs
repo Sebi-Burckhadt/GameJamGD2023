@@ -6,14 +6,14 @@ public class Movement : MonoBehaviour
 {
     public string horizontal;
     public string vertical;
-    public bool isPlayer1;
+    //public bool isPlayer1;
     Vector3 newPosition;
     Vector3 v1;
     Vector3 v2;
     public float speed = 10;
     public float rotationSpeed = 10f;
     public GameObject playerGraphics;
-
+    //CharacterController charController;
 
     float x1;
     float z1;
@@ -22,6 +22,7 @@ public class Movement : MonoBehaviour
     private void Start()
     {
         newPosition = transform.position;
+        
     }
 
     // Update is called once per frame
@@ -52,7 +53,9 @@ public class Movement : MonoBehaviour
         right.Normalize();
 
         var desiredMoveDirection = forward * z1 + right * x1;
+        //charController.Move(desiredMoveDirection * speed * Time.deltaTime);
         transform.Translate(desiredMoveDirection * speed * Time.deltaTime);
+
         //newPosition.x += x1 * speed * Time.deltaTime;
         //newPosition.z += z1 * speed * Time.deltaTime;
 
@@ -65,6 +68,25 @@ public class Movement : MonoBehaviour
         }
     }
 
-    
+    private void OnTriggerStay(Collider collision)
+    {
+        // Check if the colliding objects have the "Player" tag
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            // Apply a force to the other collider
+            Rigidbody otherRigidbody = collision.gameObject.GetComponent<Rigidbody>();
+            otherRigidbody.isKinematic = false;
+            Vector3 forceDirection = otherRigidbody.transform.position - transform.position;
+            otherRigidbody.AddForce(forceDirection * 10f, ForceMode.Impulse);
+        }
+    }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Rigidbody otherRigidbody = other.gameObject.GetComponent<Rigidbody>();
+            otherRigidbody.isKinematic = true;
+        }
+    }
 }
