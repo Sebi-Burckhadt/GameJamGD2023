@@ -8,6 +8,7 @@ public class SpawnLandMass : MonoBehaviour
     public int boxAmountY = 40;
     public GameObject[] objectsToAnimate;
     public GameObject objectToSpawn;
+    public float offset = 25;
     Vector3 startScale;
     int length;
     private void Awake()
@@ -29,7 +30,7 @@ public class SpawnLandMass : MonoBehaviour
         {
             for (int j = 0; j < boxAmountY; j++)
             {
-                Instantiate(objectToSpawn, new Vector3((i-25f)*0.21f, 0.5f, (j-25f)*0.21f), Quaternion.identity);
+                Instantiate(objectToSpawn, new Vector3((i-offset)*0.21f, 0.5f, (j-offset)*0.21f), Quaternion.identity);
             }
         }
     }

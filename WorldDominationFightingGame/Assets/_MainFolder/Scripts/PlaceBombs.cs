@@ -1,17 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlaceBombs : MonoBehaviour
 {
+    public Explode explode;
     public GameObject cursor;
     public Vector3 newPosition;
     RaycastHit hit;
     public float lerpSpeed = 15f;
+    public float loadTime = 1f;
+    float timer;
+    public Slider bombSlider;
     // Start is called before the first frame update
     void Start()
     {
         newPosition = transform.position;
+        timer = loadTime;
     }
 
     // Update is called once per frame
@@ -25,6 +31,34 @@ public class PlaceBombs : MonoBehaviour
     private void FixedUpdate()
     {
 
+        ThrowRayCast();
+
+
+    }
+
+
+    private void Update()
+    {
+        if(timer > 0)
+        {
+            timer -= Time.deltaTime;
+            bombSlider.value = 1 - timer;
+        }
+
+        
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            if(timer<= 0)
+            {
+                explode.LaunchRocket();
+                timer = loadTime;
+            }
+           
+        }
+    }
+    void ThrowRayCast()
+    {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, 50000.0f, (1 << 10)))
         {
@@ -33,7 +67,5 @@ public class PlaceBombs : MonoBehaviour
             newPosition = hit.point;// dragCurrentPosition;
         }
         cursor.transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * lerpSpeed);
-
-
     }
 }
