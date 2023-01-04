@@ -1,18 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RestartOnClick : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public string sceneToLoad;
+    private void Update()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (Input.GetMouseButtonDown(0))
+        {
+            SceneManager.LoadScene(sceneToLoad);
+        }
     }
 }

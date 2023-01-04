@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI trueCountdown;
     public TextMeshProUGUI finishedText;
     public TextMeshProUGUI winnerText;
+    public TextMeshProUGUI sceneIsReloadableText;
+    public GameObject sceneReloader;
     public CanvasGroup blackScreen;
     public Movement player1;
     public Movement player2;
@@ -131,8 +133,12 @@ public class GameManager : MonoBehaviour
         LeanTween.alphaCanvas(blackScreen, 1, 0.2f).setEase(LeanTweenType.easeInCirc);
         yield return new WaitForSeconds(1f);
         CalculateResults();
+        yield return new WaitForSeconds(3f);
+        SceneCanReload();
         yield return null;
     }
+
+    
     void CalculateResults()
     {
         List<PlayerScore> scores = new List<PlayerScore>
@@ -148,11 +154,15 @@ public class GameManager : MonoBehaviour
         secondPlace = scores[1].PlayerName;
         thirdPlace = scores[2].PlayerName;
 
-        winnerText.text = "1st: " + firstPlace + "\n2nd: " + secondPlace + "\n3rd: " + thirdPlace ;
+        winnerText.text = "1st: " + firstPlace + " with " + scores[0].Score.ToString("F0") + "% of all snow."+"\n2nd: " + secondPlace + " with " + scores[1].Score.ToString("0") + "% of all snow." + "\n3rd: " + thirdPlace + " with " + scores[2].Score.ToString("0") + "% of all snow." ;
         winnerText.gameObject.SetActive(true);
     }
 
-    
+    void SceneCanReload()
+    {
+        sceneReloader.SetActive(true);
+        sceneIsReloadableText.gameObject.SetActive(true);
+    }
 }
 
 
