@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SpawnLandMass : MonoBehaviour
 {
+    public int boxAmountX = 40;
+    public int boxAmountY = 40;
     public GameObject[] objectsToAnimate;
     public GameObject objectToSpawn;
     Vector3 startScale;
@@ -23,9 +25,9 @@ public class SpawnLandMass : MonoBehaviour
         }
         StartCoroutine(DelaySpawn());
 
-        for (int i = 0; i < 40; i++)
+        for (int i = 0; i < boxAmountX; i++)
         {
-            for (int j = 0; j < 40; j++)
+            for (int j = 0; j < boxAmountY; j++)
             {
                 Instantiate(objectToSpawn, new Vector3((i-25f)*0.21f, 0.5f, (j-25f)*0.21f), Quaternion.identity);
             }
