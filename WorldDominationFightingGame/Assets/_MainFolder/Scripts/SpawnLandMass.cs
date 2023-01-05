@@ -1,48 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class SpawnLandMass : MonoBehaviour
 {
     public GameObject objectHolder;
     public int boxAmountX = 40;
     public int boxAmountY = 40;
-    public GameObject[] objectsToAnimate;
     public GameObject objectToSpawn;
     public float offset = 25;
-    Vector3 startScale;
-    int length;
-    private void Awake()
-    {
-        length = objectsToAnimate.Length;
-    }
-    // Start is called before the first frame update
+    public float spaceBetweenObjects = 0.41f;
     void Start()
     {
-        foreach(GameObject g in objectsToAnimate)
-        {
-            startScale = g.transform.localScale;
-            g.transform.localScale = Vector3.zero;
-            //LeanTween.scale(g, startScale, 0.5f).setEase(LeanTweenType.easeOutElastic);
-        }
-        StartCoroutine(DelaySpawn());
-
+        //LeanTween.init(5000);
         for (int i = 0; i < boxAmountX; i++)
         {
             for (int j = 0; j < boxAmountY; j++)
             {
-                Instantiate(objectToSpawn, new Vector3((i-offset)*0.21f, 0.5f, (j-offset)*0.21f), Quaternion.identity, objectHolder.transform);
+                GameObject snowBlock =  Instantiate(objectToSpawn, new Vector3((i - offset) * spaceBetweenObjects, .2f, (j - offset) * spaceBetweenObjects), Quaternion.identity, objectHolder.transform);
+                StartCoroutine(DelayedEnable((i+j + 0f) * 0.01f, snowBlock));
             }
         }
+
+       
     }
 
-    IEnumerator DelaySpawn()
+    IEnumerator DelayedEnable(float waitingTime, GameObject currentObject)
     {
-        for(int i = 0; i < length; i++)
-        {
-            
-           LeanTween.scale(objectsToAnimate[i], startScale, 0.5f).setEase(LeanTweenType.easeOutElastic);
-            yield return new WaitForSeconds(0.01f);
-        }
+        yield return new WaitForSeconds(waitingTime);
+        currentObject.SetActive(true);
+        //LeanTween.scale(currentObject, Vector3.one*.2f, 1f).setEase(LeanTweenType.easeOutExpo);
     }
+
+
 }

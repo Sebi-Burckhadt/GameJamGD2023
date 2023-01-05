@@ -29,37 +29,55 @@ public class Counter : MonoBehaviour
     float fullWidth;
     float difference;
     public float heightPanel = 150f;
+
+    
+    int maxWaitTime = 25;
+    int currentTime;
     private void Start()
     {
-        
+        currentTime = maxWaitTime;
         difference = maxWidth - minWidth;
         fullWidth = difference * 3;
         UpdateCounter();
         StartCoroutine(DelayResettedTextPos());
+        UpdateCounter();
+    }
+    
+
+    void DisplayScore()
+    {
+
+        
+            currentTime = maxWaitTime;
+            text1.text = "Human: " + s1Percent.ToString("F2") + "%";
+            text2.text = "Whale: " + s2Percent.ToString("F2") + "%";
+            text3.text = "Insect: " + s3Percent.ToString("F2") + "%";
+
+            //calculate with of panel that the width doesnt fall below the minWidth(250px) the three dont exeed the maxwidth+250*3
+            panel1.sizeDelta = new Vector2(((fullWidth / 100) * s1Percent) + minWidth, heightPanel);
+            panel2.sizeDelta = new Vector2(((fullWidth / 100) * s2Percent) + minWidth, heightPanel);
+            panel3.sizeDelta = new Vector2(((fullWidth / 100) * s3Percent) + minWidth, heightPanel);
+            
+        
         
     }
-
     public void UpdateCounter()
     {
-        s1 = p1Score.score;
-        s2 = p2Score.score;
-        s3 = p3Score.score;
-        
-        newMaxAmount = s1 + s2 + s3;
-        s1Percent = ((s1 + 0f) / newMaxAmount) * 100f;
-        s2Percent = ((s2 + 0f)/ newMaxAmount) * 100f;
-        s3Percent = ((s3 + 0f)/ newMaxAmount) * 100f;
+        currentTime--;
+        if (currentTime <= 0)
+        {
+            s1 = p1Score.score;
+            s2 = p2Score.score;
+            s3 = p3Score.score;
 
-        text1.text = "Human: " + s1Percent.ToString("F2") + "%";
-        text2.text = "Whale: " + s2Percent.ToString("F2") + "%";
-        text3.text = "Insect: " + s3Percent.ToString("F2") + "%";
+            newMaxAmount = s1 + s2 + s3;
+            s1Percent = ((s1 + 0f) / newMaxAmount) * 100f;
+            s2Percent = ((s2 + 0f) / newMaxAmount) * 100f;
+            s3Percent = ((s3 + 0f) / newMaxAmount) * 100f;
+            DisplayScore();
+        }
 
-        //calculate with of panel that the width doesnt fall below the minWidth(250px) the three dont exeed the maxwidth+250*3
-        panel1.sizeDelta = new Vector2(((fullWidth / 100) * s1Percent) + minWidth, heightPanel);
-        panel2.sizeDelta = new Vector2(((fullWidth / 100) * s2Percent) + minWidth, heightPanel);
-        panel3.sizeDelta = new Vector2(((fullWidth / 100) * s3Percent) + minWidth, heightPanel);
 
-        
     }
 
     IEnumerator DelayResettedTextPos()
