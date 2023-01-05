@@ -18,7 +18,7 @@ public class SpawnLandMass : MonoBehaviour
         {
             for (int j = 0; j < boxAmountY; j++)
             {
-                GameObject snowBlock =  Instantiate(objectToSpawn, new Vector3((i - offset) * spaceBetweenObjects, .2f, (j - offset) * spaceBetweenObjects), Quaternion.identity, objectHolder.transform);
+                GameObject snowBlock =  Instantiate(objectToSpawn, new Vector3((i - offset) * spaceBetweenObjects, 2.2f, (j - offset) * spaceBetweenObjects), Quaternion.identity, objectHolder.transform);
                 StartCoroutine(DelayedEnable((i+j + 0f) * 0.01f, snowBlock));
             }
         }
