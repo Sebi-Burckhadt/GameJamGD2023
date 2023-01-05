@@ -1,10 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 using TMPro;
 
 public class Counter : MonoBehaviour
 {
+    public FMOD.Studio.EventInstance em;
+    public EventReference instrumentName;
+
+    public string[] parameterNames;
+
 
     public TriggerCounter p1Score;
     public TriggerCounter p2Score;
@@ -41,6 +47,12 @@ public class Counter : MonoBehaviour
         UpdateCounter();
         StartCoroutine(DelayResettedTextPos());
         UpdateCounter();
+
+        em = FMODUnity.RuntimeManager.CreateInstance(instrumentName);
+        //em.setParameterByName(pitchName, allNotes[Mathf.RoundToInt(slider.value)]);
+        //em.setParameterByName(volumeName, volumeSlider.value / 10);
+        em.start();
+        em.release();
     }
     
 
@@ -57,9 +69,11 @@ public class Counter : MonoBehaviour
             panel1.sizeDelta = new Vector2(((fullWidth / 100) * s1Percent) + minWidth, heightPanel);
             panel2.sizeDelta = new Vector2(((fullWidth / 100) * s2Percent) + minWidth, heightPanel);
             panel3.sizeDelta = new Vector2(((fullWidth / 100) * s3Percent) + minWidth, heightPanel);
-            
-        
-        
+        em.setParameterByName(parameterNames[0], s1Percent);
+        em.setParameterByName(parameterNames[1], s2Percent);
+        em.setParameterByName(parameterNames[2], s3Percent);
+
+
     }
     public void UpdateCounter()
     {

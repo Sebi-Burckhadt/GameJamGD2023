@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{6c973213-1e39-45c8-8572-42c4fbd63292}">
+		<property name="name">
+			<value>Alien %</value>
+		</property>
+		<relationship name="folder">
+			<destination>{44a38ae7-c349-4c39-8e24-528942855761}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{26198a55-12ca-4cc3-b507-37dae5dcefc2}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{26198a55-12ca-4cc3-b507-37dae5dcefc2}">
+		<property name="maximum">
+			<value>100</value>
+		</property>
+		<property name="initialValue">
+			<value>33</value>
+		</property>
+	</object>
+</objects>

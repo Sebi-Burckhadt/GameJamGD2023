@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{31b1d143-c2dc-4c32-a435-1ef700da4fec}">
+		<property name="name">
+			<value>Whale %</value>
+		</property>
+		<relationship name="folder">
+			<destination>{44a38ae7-c349-4c39-8e24-528942855761}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{1fb54750-3900-4a00-a4f5-9c9df57a5fe8}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{1fb54750-3900-4a00-a4f5-9c9df57a5fe8}">
+		<property name="maximum">
+			<value>100</value>
+		</property>
+		<property name="initialValue">
+			<value>33</value>
+		</property>
+	</object>
+</objects>
