@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    public Animator anim;
     public float repelForce = 50;
     public bool canMove;
     public string horizontal;
@@ -76,6 +77,8 @@ public class Movement : MonoBehaviour
         {
             playerGraphics.transform.localRotation = Quaternion.RotateTowards(playerGraphics.transform.rotation, Quaternion.LookRotation(v1), rotationSpeed);
         }
+
+        //Animation Here
     }
 
     private void OnTriggerStay(Collider collision)
