@@ -116,6 +116,7 @@ public class GameManager : MonoBehaviour
         player1.canMove = true;
         player2.canMove = true;
         bombPlayer.canPlaceBomb = true;
+        scoreCounter.StartMusic();
     }
 
     void EndGame()
@@ -125,6 +126,9 @@ public class GameManager : MonoBehaviour
         bombPlayer.canPlaceBomb = false;
         finishedText.gameObject.SetActive(true);
         StartCoroutine(FinishScene());
+        scoreCounter.canAdjustSound = false;
+        scoreCounter.removeSound();
+
     }
 
     IEnumerator FinishScene()
@@ -162,6 +166,7 @@ public class GameManager : MonoBehaviour
     {
         sceneReloader.SetActive(true);
         sceneIsReloadableText.gameObject.SetActive(true);
+        scoreCounter.KillMusic();
     }
 }
 

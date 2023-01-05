@@ -6265,7 +6265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ce7157a154168d4c9ce7436f599566d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: MainScene
+  sceneToLoad: MainMenu
 --- !u!4 &1593462714
 Transform:
   m_ObjectHideFlags: 0
@@ -7889,6 +7889,7 @@ MonoBehaviour:
       Data3: 1002440070
       Data4: -595071857
     Path: event:/Music_ver1
+  canAdjustSound: 0
   parameterNames:
   - Cowboy %
   - Whale %
@@ -7938,7 +7939,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7396ac64702080b4ebf000215aab53bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameTimer: 87
+  gameTimer: 45
   alternativeCountdown: {fileID: 1949540908}
   trueCountdown: {fileID: 1323861331}
   finishedText: {fileID: 1430350748}

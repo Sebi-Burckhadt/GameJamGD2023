@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
+using FMOD.Studio;
 using TMPro;
 
 public class Counter : MonoBehaviour
 {
     public FMOD.Studio.EventInstance em;
     public EventReference instrumentName;
-
+    public bool canAdjustSound;
     public string[] parameterNames;
 
 
@@ -48,13 +49,22 @@ public class Counter : MonoBehaviour
         StartCoroutine(DelayResettedTextPos());
         UpdateCounter();
 
+        
+    }
+    
+    public void KillMusic()
+    {
+        em.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+    }
+    public void StartMusic()
+    {
         em = FMODUnity.RuntimeManager.CreateInstance(instrumentName);
         //em.setParameterByName(pitchName, allNotes[Mathf.RoundToInt(slider.value)]);
         //em.setParameterByName(volumeName, volumeSlider.value / 10);
         em.start();
         em.release();
+        canAdjustSound = true;
     }
-    
 
     void DisplayScore()
     {
@@ -69,11 +79,22 @@ public class Counter : MonoBehaviour
             panel1.sizeDelta = new Vector2(((fullWidth / 100) * s1Percent) + minWidth, heightPanel);
             panel2.sizeDelta = new Vector2(((fullWidth / 100) * s2Percent) + minWidth, heightPanel);
             panel3.sizeDelta = new Vector2(((fullWidth / 100) * s3Percent) + minWidth, heightPanel);
+
+        if (canAdjustSound)
+        {
+            UpdateMusic();
+        }
+
+        
+
+
+    }
+
+    void UpdateMusic()
+    {
         em.setParameterByName(parameterNames[0], s1Percent);
         em.setParameterByName(parameterNames[1], s2Percent);
         em.setParameterByName(parameterNames[2], s3Percent);
-
-
     }
     public void UpdateCounter()
     {
@@ -101,5 +122,13 @@ public class Counter : MonoBehaviour
         text2.GetComponent<RectTransform>().localPosition = Vector3.zero;
         text3.GetComponent<RectTransform>().localPosition = Vector3.zero;
         yield return null;
+    }
+
+    public void removeSound()
+    {
+
+        em.setParameterByName(parameterNames[0], 100);
+        em.setParameterByName(parameterNames[1], 100);
+        em.setParameterByName(parameterNames[2], 100);
     }
 }
