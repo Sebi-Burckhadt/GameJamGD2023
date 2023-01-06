@@ -32,7 +32,7 @@ public class MenuScript : MonoBehaviour
     {
         blackScreen.gameObject.SetActive(true);
         LeanTween.alphaCanvas(blackScreen, 1, .2f).setEase(LeanTweenType.easeOutCirc);
-        LeanTween.delayedCall(0.2f, () => Application.Quit());
+       // LeanTween.delayedCall(0.2f, () => Application.Quit());
         LeanTween.delayedCall(0.2f, () => SceneManager.LoadScene("MainScene"));
     }
 
