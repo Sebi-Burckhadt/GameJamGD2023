@@ -9,10 +9,14 @@ public class PlayerScore : System.IComparable<PlayerScore>
         public string PlayerName { get; set; }
         public float Score { get; set; }
 
-        public PlayerScore(string playerName, float score)
+    public int Index { get; set; }
+
+    public PlayerScore(string playerName, float score, int index)
         {
             PlayerName = playerName;
             Score = score;
+        Index = index;
+
         }
 
     public int CompareTo(PlayerScore other)
