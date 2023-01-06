@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI finishedText;
     public TextMeshProUGUI winnerText;
     public TextMeshProUGUI sceneIsReloadableText;
+    public GameObject scorePanel;
     public GameObject sceneReloader;
     public CanvasGroup blackScreen;
     public Movement player1;
@@ -144,6 +145,7 @@ public class GameManager : MonoBehaviour
         player2.canMove = false;
         bombPlayer.canPlaceBomb = false;
         finishedText.gameObject.SetActive(true);
+        scorePanel.SetActive(false);
         StartCoroutine(FinishScene());
         scoreCounter.canAdjustSound = false;
         scoreCounter.removeSound();
@@ -152,11 +154,14 @@ public class GameManager : MonoBehaviour
 
     IEnumerator FinishScene()
     {
-        yield return new WaitForSeconds(2f);
-        LeanTween.alphaCanvas(blackScreen, .2f, 0.2f).setEase(LeanTweenType.easeInCirc);
+        yield return new WaitForSeconds(1f);
+        LeanTween.alphaCanvas(blackScreen, 1f, 0.2f).setEase(LeanTweenType.easeInCirc);
+        yield return new WaitForSeconds(1f);
+        LeanTween.alphaCanvas(blackScreen, 0f, 0.2f).setEase(LeanTweenType.easeInCirc);
         yield return new WaitForSeconds(1f);
         CalculateResults();
         MoveScene();
+        finishedText.gameObject.SetActive(false);
         yield return new WaitForSeconds(3f);
         SceneCanReload();
         yield return null;
@@ -189,7 +194,7 @@ public class GameManager : MonoBehaviour
         secondPlace = scores[1].PlayerName;
         thirdPlace = scores[2].PlayerName;
         
-        winnerText.text = "1st: " + firstPlace + " with " + scores[0].Score.ToString("F0") + "% of all snow."+"\n2nd: " + secondPlace + " with " + scores[1].Score.ToString("0") + "% of all snow." + "\n3rd: " + thirdPlace + " with " + scores[2].Score.ToString("0") + "% of all snow." ;
+        winnerText.text = "1st: " + firstPlace + " with " + scores[0].Score.ToString("F0") + "% of all snow."+ "\n\n2nd: " + secondPlace + " with " + scores[1].Score.ToString("0") + "% of all snow." + "\n\n3rd: " + thirdPlace + " with " + scores[2].Score.ToString("0") + "% of all snow." ;
         winnerText.gameObject.SetActive(true);
 
         PlaySound(winSound);

@@ -25,6 +25,7 @@ public class Explode : MonoBehaviour
         explosionPos = transform.position;
         GameObject newRocket = Instantiate(rocket, explosionPos, Quaternion.identity);
         LeanTween.delayedCall(launchTime, () => SpawnExplosion());
+
         anim.SetTrigger("BugButton");
         PlaySound();
         //KillSound();

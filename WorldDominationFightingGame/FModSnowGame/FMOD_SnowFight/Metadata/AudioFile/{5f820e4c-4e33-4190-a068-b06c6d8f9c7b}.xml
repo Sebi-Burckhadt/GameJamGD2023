@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{5f820e4c-4e33-4190-a068-b06c6d8f9c7b}">
+		<property name="assetPath">
+			<value>HEART_BEATING_FAST_CS.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>44.889687500000001</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{da4a489e-5994-4527-b3f8-b97005cc25bb}</destination>
+		</relationship>
+	</object>
+</objects>
