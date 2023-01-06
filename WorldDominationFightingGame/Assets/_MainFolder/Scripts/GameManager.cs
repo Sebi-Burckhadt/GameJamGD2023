@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using FMODUnity;
+using FMOD.Studio;
 using UnityEngine.UI;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -41,6 +44,11 @@ public class GameManager : MonoBehaviour
     public GameObject humanModel;
     public GameObject whaleModel;
     public GameObject alienModel;
+
+    public FMOD.Studio.EventInstance em;
+    public EventReference humanWinSound;
+    public EventReference whaleWinSound;
+    public EventReference alienWinSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -155,7 +163,12 @@ public class GameManager : MonoBehaviour
         mainCamera.transform.position = cameraPlacementWin.position;
         mainCamera.transform.rotation = cameraPlacementWin.rotation;
     }
-    
+    public void PlayWinSound(EventReference winSound)
+    {
+        em = FMODUnity.RuntimeManager.CreateInstance(winSound);
+        em.start();
+        em.release();
+    }
     void CalculateResults()
     {
         List<PlayerScore> scores = new List<PlayerScore>
@@ -178,16 +191,19 @@ public class GameManager : MonoBehaviour
         if (scores[0].Index == 0)
         {
             humanModel.SetActive(true);
+            PlayWinSound(humanWinSound);
         }
         //activate Whale model
         if (scores[0].Index == 1)
         {
             whaleModel.SetActive(true);
+            PlayWinSound(whaleWinSound);
         }
         //activate Alien model
         if (scores[0].Index == 2)
         {
             alienModel.SetActive(true);
+            PlayWinSound(alienWinSound);
         }
     }
 

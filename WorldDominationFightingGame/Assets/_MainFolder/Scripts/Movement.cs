@@ -49,6 +49,18 @@ public class Movement : MonoBehaviour
         x1 = Input.GetAxis(horizontal);
         z1 = Input.GetAxis(vertical);
 
+
+        if(Mathf.Abs( x1) + Mathf.Abs(z1) > 0f)
+        {
+            anim.SetBool("isMoving", true);
+
+        }
+
+        else
+        {
+             anim.SetBool("isMoving", false);
+        }
+
         //assuming we only using the single camera:
         var camera = Camera.main;
 
@@ -66,7 +78,8 @@ public class Movement : MonoBehaviour
         var desiredMoveDirection = forward * z1 + right * x1;
         //charController.Move(desiredMoveDirection * speed * Time.deltaTime);
         transform.Translate(desiredMoveDirection * speed * Time.deltaTime);
-
+        
+        
         //newPosition.x += x1 * speed * Time.deltaTime;
         //newPosition.z += z1 * speed * Time.deltaTime;
 

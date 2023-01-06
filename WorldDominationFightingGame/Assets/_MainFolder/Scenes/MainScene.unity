@@ -7986,6 +7986,27 @@ MonoBehaviour:
   humanModel: {fileID: 1693997541}
   whaleModel: {fileID: 1647361581}
   alienModel: {fileID: 537701554}
+  humanWinSound:
+    Guid:
+      Data1: 574985440
+      Data2: 1153741809
+      Data3: 1709501607
+      Data4: 601056532
+    Path: event:/HumanWin
+  whaleWinSound:
+    Guid:
+      Data1: -2070848503
+      Data2: 1260177012
+      Data3: 1871962272
+      Data4: -1177535238
+    Path: event:/WhaleWinSound
+  alienWinSound:
+    Guid:
+      Data1: -121898111
+      Data2: 1075656452
+      Data3: 1391986569
+      Data4: 281460813
+    Path: event:/AlienWinSound
 --- !u!4 &2036362648 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 236204947723162183, guid: 7170cca920cf6a74a8b7d06e31a84f08, type: 3}
