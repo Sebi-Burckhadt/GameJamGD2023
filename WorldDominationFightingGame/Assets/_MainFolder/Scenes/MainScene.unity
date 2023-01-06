@@ -5934,9 +5934,10 @@ MonoBehaviour:
     Path: event:/RocketImpact
   radius: 2
   power: 1500
+  explosion: {fileID: 6297211105789161533, guid: dd183e49ce3d0114995063e1a48c9526, type: 3}
   rocket: {fileID: 2841416527660082720, guid: 738b21357c6590647aa8d8921ef45512, type: 3}
   launchTime: 0.7
-  launchHeight: 20
+  launchHeight: 12
   anim: {fileID: 1703956502}
 --- !u!4 &1534014005
 Transform:
@@ -7966,7 +7967,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7396ac64702080b4ebf000215aab53bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameTimer: 10
+  gameTimer: 45
   alternativeCountdown: {fileID: 1949540908}
   trueCountdown: {fileID: 1323861331}
   finishedText: {fileID: 1430350748}
@@ -8007,6 +8008,27 @@ MonoBehaviour:
       Data3: 1391986569
       Data4: 281460813
     Path: event:/AlienWinSound
+  winSound:
+    Guid:
+      Data1: 293543540
+      Data2: 1148920236
+      Data3: -348326269
+      Data4: -1642199966
+    Path: event:/party_horn_17
+  startSound:
+    Guid:
+      Data1: 633985726
+      Data2: 1292453112
+      Data3: 333845937
+      Data4: -150874128
+    Path: event:/TrillerpfeifeStart
+  endSound:
+    Guid:
+      Data1: 1628079340
+      Data2: 1094997731
+      Data3: 107144360
+      Data4: 1711726238
+    Path: event:/GamejamColdwar_Sounds_whistleEnd
 --- !u!4 &2036362648 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 236204947723162183, guid: 7170cca920cf6a74a8b7d06e31a84f08, type: 3}

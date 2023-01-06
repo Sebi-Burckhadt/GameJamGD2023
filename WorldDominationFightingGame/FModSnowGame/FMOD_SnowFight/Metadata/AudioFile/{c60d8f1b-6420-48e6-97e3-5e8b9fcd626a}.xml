@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{c60d8f1b-6420-48e6-97e3-5e8b9fcd626a}">
+		<property name="assetPath">
+			<value>party_horn_17.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.8484791666666667</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{da4a489e-5994-4527-b3f8-b97005cc25bb}</destination>
+		</relationship>
+	</object>
+</objects>

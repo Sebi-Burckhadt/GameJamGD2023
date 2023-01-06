@@ -1377,10 +1377,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'CLEAN YOUR GARDEN
+  m_text: 'KEEP YOUR LAWN FREE OF SNOW
 
 
-    YOUR NEIGHBOR IS EVIL!'
+    THE CLEANES GARDEN WINS'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f4e51e64f066fd45a832f6e264a8a07, type: 2}
   m_sharedMaterial: {fileID: 3181253898431155404, guid: 8f4e51e64f066fd45a832f6e264a8a07, type: 2}

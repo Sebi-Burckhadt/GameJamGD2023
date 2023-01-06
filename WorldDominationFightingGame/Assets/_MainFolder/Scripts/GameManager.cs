@@ -49,6 +49,9 @@ public class GameManager : MonoBehaviour
     public EventReference humanWinSound;
     public EventReference whaleWinSound;
     public EventReference alienWinSound;
+    public EventReference winSound;
+    public EventReference startSound;
+    public EventReference endSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -127,6 +130,7 @@ public class GameManager : MonoBehaviour
 
     void StartGame()
     {
+        PlaySound(startSound);
         player1.canMove = true;
         player2.canMove = true;
         bombPlayer.canPlaceBomb = true;
@@ -135,6 +139,7 @@ public class GameManager : MonoBehaviour
 
     void EndGame()
     {
+        PlaySound(endSound);
         player1.canMove = false;
         player2.canMove = false;
         bombPlayer.canPlaceBomb = false;
@@ -163,7 +168,7 @@ public class GameManager : MonoBehaviour
         mainCamera.transform.position = cameraPlacementWin.position;
         mainCamera.transform.rotation = cameraPlacementWin.rotation;
     }
-    public void PlayWinSound(EventReference winSound)
+    public void PlaySound(EventReference winSound)
     {
         em = FMODUnity.RuntimeManager.CreateInstance(winSound);
         em.start();
@@ -187,23 +192,24 @@ public class GameManager : MonoBehaviour
         winnerText.text = "1st: " + firstPlace + " with " + scores[0].Score.ToString("F0") + "% of all snow."+"\n2nd: " + secondPlace + " with " + scores[1].Score.ToString("0") + "% of all snow." + "\n3rd: " + thirdPlace + " with " + scores[2].Score.ToString("0") + "% of all snow." ;
         winnerText.gameObject.SetActive(true);
 
+        PlaySound(winSound);
         //activate Human model
         if (scores[0].Index == 0)
         {
             humanModel.SetActive(true);
-            PlayWinSound(humanWinSound);
+            PlaySound(humanWinSound);
         }
         //activate Whale model
         if (scores[0].Index == 1)
         {
             whaleModel.SetActive(true);
-            PlayWinSound(whaleWinSound);
+            PlaySound(whaleWinSound);
         }
         //activate Alien model
         if (scores[0].Index == 2)
         {
             alienModel.SetActive(true);
-            PlayWinSound(alienWinSound);
+            PlaySound(alienWinSound);
         }
     }
 
