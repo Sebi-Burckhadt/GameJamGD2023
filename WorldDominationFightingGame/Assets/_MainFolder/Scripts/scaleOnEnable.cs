@@ -12,12 +12,18 @@ public class scaleOnEnable : MonoBehaviour
         startSize = transform.localScale;
         if (scaleUp)
         {
+
             transform.localScale = Vector3.zero;
             LeanTween.scale(gameObject, startSize, 0.4f).setEase(LeanTweenType.easeOutElastic);
         }
         else
         {
-            LeanTween.scale(gameObject, Vector3.zero, 0.2f).setEase(LeanTweenType.easeInExpo);
+            //LeanTween.scale(gameObject, Vector3.zero, 0.2f).setEase(LeanTweenType.easeInExpo);
         }
+    }
+
+    public void ScaleDown()
+    {
+        LeanTween.scale(gameObject, Vector3.zero, 0.1f).setEase(LeanTweenType.easeInExpo);
     }
 }
