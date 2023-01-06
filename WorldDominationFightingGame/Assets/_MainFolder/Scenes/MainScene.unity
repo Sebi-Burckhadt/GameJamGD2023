@@ -4798,6 +4798,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 771333206}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &780108112 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ef2d706ae4239954996313abfd1c60a4, type: 3}
+  m_PrefabInstance: {fileID: 2004452083}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &780108116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780108112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d875fa4cfeb226a43bed45a73482e533, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: 0.15
+--- !u!114 &780108117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780108112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4a3988959d4cb4ab05e4257fdcf6bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &796080248
 GameObject:
   m_ObjectHideFlags: 0
@@ -7385,9 +7415,9 @@ RectTransform:
   m_Father: {fileID: 580858795}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 340, y: -1005.4143}
   m_SizeDelta: {x: 620, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1330274238
@@ -8733,9 +8763,9 @@ RectTransform:
   m_Father: {fileID: 580858795}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 960, y: -1005.4143}
   m_SizeDelta: {x: 620, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1660611435
@@ -9000,9 +9030,9 @@ RectTransform:
   m_Father: {fileID: 580858795}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1580, y: -1005.4143}
   m_SizeDelta: {x: 620, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1695133983
@@ -11045,6 +11075,20 @@ MonoBehaviour:
       Data3: 107144360
       Data4: 1711726238
     Path: event:/GamejamColdwar_Sounds_whistleEnd
+  heartbeatSound:
+    Guid:
+      Data1: -2010094146
+      Data2: 1193027760
+      Data3: -792002412
+      Data4: -761070632
+    Path: event:/HEART_BEATING_FAST_CS
+  countdown:
+    Guid:
+      Data1: -1889144083
+      Data2: 1232185104
+      Data3: -1430217550
+      Data4: 839730175
+    Path: event:/countdown
 --- !u!4 &2036362648 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 236204947723162183, guid: 7170cca920cf6a74a8b7d06e31a84f08, type: 3}
