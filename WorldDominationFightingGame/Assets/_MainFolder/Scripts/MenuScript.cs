@@ -13,7 +13,10 @@ public class MenuScript : MonoBehaviour
 
     public void ChangeToWhereToSit()
     {
+        
         whereToSit.gameObject.SetActive(true);
+
+        LeanTween.alphaCanvas(mainPanel, 0, .2f).setEase(LeanTweenType.easeOutCirc);
         LeanTween.alphaCanvas(whereToSit, 1, .2f).setEase(LeanTweenType.easeOutCirc);
         LeanTween.delayedCall(0.2f, () => mainPanel.gameObject.SetActive(false));
     }

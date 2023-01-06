@@ -71,9 +71,9 @@ public class Counter : MonoBehaviour
 
         
             currentTime = maxWaitTime;
-            text1.text = "Human: " + s1Percent.ToString("F2") + "%";
-            text2.text = "Whale: " + s2Percent.ToString("F2") + "%";
-            text3.text = "Insect: " + s3Percent.ToString("F2") + "%";
+            text1.text = "John: " + s1Percent.ToString("F2") + "%";
+            text2.text = "Blobby: " + s2Percent.ToString("F2") + "%";
+            text3.text = "Graaks: " + s3Percent.ToString("F2") + "%";
 
             //calculate with of panel that the width doesnt fall below the minWidth(250px) the three dont exeed the maxwidth+250*3
             panel1.sizeDelta = new Vector2(((fullWidth / 100) * s1Percent) + minWidth, heightPanel);

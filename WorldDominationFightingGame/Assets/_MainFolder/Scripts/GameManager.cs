@@ -53,6 +53,8 @@ public class GameManager : MonoBehaviour
     public EventReference winSound;
     public EventReference startSound;
     public EventReference endSound;
+    public EventReference heartbeatSound;
+    public EventReference countdown;
     // Start is called before the first frame update
     void Start()
     {
@@ -62,6 +64,7 @@ public class GameManager : MonoBehaviour
         startTimerBool = true;
         trueCountdown.gameObject.SetActive(false);
         finishedText.gameObject.SetActive(false);
+        PlaySound(countdown);
     }
 
     // Update is called once per frame
@@ -81,6 +84,7 @@ public class GameManager : MonoBehaviour
                     {
                         once = false;
                         EndTimerPingPong();
+                        PlaySound(heartbeatSound);
                     }
                 }
                 
@@ -119,6 +123,8 @@ public class GameManager : MonoBehaviour
         LeanTween.scale(trueCountdown.gameObject, Vector3.one * 2, 0.75f).setLoopPingPong();
         
     }
+
+
 
     void UpdateAlternativeTimer()
     {

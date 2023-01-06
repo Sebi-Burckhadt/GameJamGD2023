@@ -591,7 +591,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Whales: 0%'
+  m_text: 'Blobby: 0%'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f4e51e64f066fd45a832f6e264a8a07, type: 2}
   m_sharedMaterial: {fileID: 3181253898431155404, guid: 8f4e51e64f066fd45a832f6e264a8a07, type: 2}
@@ -1292,7 +1292,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 197}
+  m_AnchoredPosition: {x: 0, y: 101}
   m_SizeDelta: {x: 1170.616, y: 151.638}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &204097124
@@ -5758,7 +5758,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Aliens: 36.57%'
+  m_text: 'Graaks: 36.57%'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f4e51e64f066fd45a832f6e264a8a07, type: 2}
   m_sharedMaterial: {fileID: 3181253898431155404, guid: 8f4e51e64f066fd45a832f6e264a8a07, type: 2}
@@ -8631,7 +8631,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Humans: 0%'
+  m_text: 'John: 0%'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f4e51e64f066fd45a832f6e264a8a07, type: 2}
   m_sharedMaterial: {fileID: 3181253898431155404, guid: 8f4e51e64f066fd45a832f6e264a8a07, type: 2}
@@ -10693,7 +10693,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ef2d706ae4239954996313abfd1c60a4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.11
+      value: 0.33
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ef2d706ae4239954996313abfd1c60a4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10982,7 +10982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7396ac64702080b4ebf000215aab53bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameTimer: 10
+  gameTimer: 45
   alternativeCountdown: {fileID: 1949540908}
   trueCountdown: {fileID: 1323861331}
   finishedText: {fileID: 1430350748}
