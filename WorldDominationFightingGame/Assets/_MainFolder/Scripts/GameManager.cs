@@ -154,12 +154,13 @@ public class GameManager : MonoBehaviour
 
     IEnumerator FinishScene()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
+        
+        
         LeanTween.alphaCanvas(blackScreen, 1f, 0.2f).setEase(LeanTweenType.easeInCirc);
         yield return new WaitForSeconds(1f);
-        LeanTween.alphaCanvas(blackScreen, 0f, 0.2f).setEase(LeanTweenType.easeInCirc);
-        yield return new WaitForSeconds(1f);
         CalculateResults();
+        LeanTween.alphaCanvas(blackScreen, 0f, 0.2f).setEase(LeanTweenType.easeInCirc);
         MoveScene();
         finishedText.gameObject.SetActive(false);
         yield return new WaitForSeconds(3f);
