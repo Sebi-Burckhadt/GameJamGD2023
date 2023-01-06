@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using FMODUnity;
+using FMOD.Studio;
 using UnityEngine.UI;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -35,6 +38,17 @@ public class GameManager : MonoBehaviour
     string secondPlace;
     string thirdPlace;
 
+
+    public Transform cameraPlacementWin;
+    public GameObject mainCamera;
+    public GameObject humanModel;
+    public GameObject whaleModel;
+    public GameObject alienModel;
+
+    public FMOD.Studio.EventInstance em;
+    public EventReference humanWinSound;
+    public EventReference whaleWinSound;
+    public EventReference alienWinSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -134,22 +148,34 @@ public class GameManager : MonoBehaviour
     IEnumerator FinishScene()
     {
         yield return new WaitForSeconds(2f);
-        LeanTween.alphaCanvas(blackScreen, 1, 0.2f).setEase(LeanTweenType.easeInCirc);
+        LeanTween.alphaCanvas(blackScreen, .2f, 0.2f).setEase(LeanTweenType.easeInCirc);
         yield return new WaitForSeconds(1f);
         CalculateResults();
+        MoveScene();
         yield return new WaitForSeconds(3f);
         SceneCanReload();
         yield return null;
     }
 
-    
+
+    void MoveScene()
+    {
+        mainCamera.transform.position = cameraPlacementWin.position;
+        mainCamera.transform.rotation = cameraPlacementWin.rotation;
+    }
+    public void PlayWinSound(EventReference winSound)
+    {
+        em = FMODUnity.RuntimeManager.CreateInstance(winSound);
+        em.start();
+        em.release();
+    }
     void CalculateResults()
     {
         List<PlayerScore> scores = new List<PlayerScore>
         {
-            new PlayerScore(p1Name, scoreCounter.s1Percent),
-            new PlayerScore(p2Name, scoreCounter.s2Percent),
-            new PlayerScore(p3Name, scoreCounter.s3Percent)
+            new PlayerScore(p1Name, scoreCounter.s1Percent, 0),
+            new PlayerScore(p2Name, scoreCounter.s2Percent, 1),
+            new PlayerScore(p3Name, scoreCounter.s3Percent, 2)
         };
         scores.Sort();
 
@@ -157,9 +183,28 @@ public class GameManager : MonoBehaviour
         firstPlace = scores[0].PlayerName;
         secondPlace = scores[1].PlayerName;
         thirdPlace = scores[2].PlayerName;
-
+        
         winnerText.text = "1st: " + firstPlace + " with " + scores[0].Score.ToString("F0") + "% of all snow."+"\n2nd: " + secondPlace + " with " + scores[1].Score.ToString("0") + "% of all snow." + "\n3rd: " + thirdPlace + " with " + scores[2].Score.ToString("0") + "% of all snow." ;
         winnerText.gameObject.SetActive(true);
+
+        //activate Human model
+        if (scores[0].Index == 0)
+        {
+            humanModel.SetActive(true);
+            PlayWinSound(humanWinSound);
+        }
+        //activate Whale model
+        if (scores[0].Index == 1)
+        {
+            whaleModel.SetActive(true);
+            PlayWinSound(whaleWinSound);
+        }
+        //activate Alien model
+        if (scores[0].Index == 2)
+        {
+            alienModel.SetActive(true);
+            PlayWinSound(alienWinSound);
+        }
     }
 
     void SceneCanReload()

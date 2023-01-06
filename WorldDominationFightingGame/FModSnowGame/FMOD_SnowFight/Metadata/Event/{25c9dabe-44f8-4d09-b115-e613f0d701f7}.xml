@@ -2,10 +2,10 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{25c9dabe-44f8-4d09-b115-e613f0d701f7}">
 		<property name="name">
-			<value>Trillerpfeife</value>
+			<value>TrillerpfeifeStart</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{28fe1f87-d26d-4f4f-bfb4-5bde7ea967f0}</destination>
@@ -59,11 +59,18 @@
 	<object class="EventAutomatableProperties" id="{e469c3a1-6ecc-46b1-b3f5-cc233c2671cb}" />
 	<object class="MarkerTrack" id="{5a094459-ccfe-4b30-b74a-e94deccb58d0}" />
 	<object class="GroupTrack" id="{1683104b-80fe-4ca8-b3aa-74600ab07603}">
+		<relationship name="modules">
+			<destination>{89b35999-29ea-48a0-8692-c8f724a925a8}</destination>
+		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{102c42dd-ea87-4da7-8b00-03f1c4c9fd19}</destination>
 		</relationship>
 	</object>
-	<object class="Timeline" id="{1a3795d5-460b-4e12-92ed-405785ad4343}" />
+	<object class="Timeline" id="{1a3795d5-460b-4e12-92ed-405785ad4343}">
+		<relationship name="modules">
+			<destination>{89b35999-29ea-48a0-8692-c8f724a925a8}</destination>
+		</relationship>
+	</object>
 	<object class="EventMixerMaster" id="{3e484f45-72dd-4c71-9bc7-931e160028bf}">
 		<relationship name="effectChain">
 			<destination>{cf801233-5188-4c83-9eed-36c01e608eab}</destination>
@@ -81,6 +88,14 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{b3b33055-fb9b-422d-a114-8b8854e2f592}" />
+	<object class="SingleSound" id="{89b35999-29ea-48a0-8692-c8f724a925a8}">
+		<property name="length">
+			<value>2.25</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{47184926-18fa-45ca-91e4-fd7c2250960c}</destination>
+		</relationship>
+	</object>
 	<object class="EventMixerGroup" id="{102c42dd-ea87-4da7-8b00-03f1c4c9fd19}">
 		<property name="name">
 			<value>Audio 1</value>

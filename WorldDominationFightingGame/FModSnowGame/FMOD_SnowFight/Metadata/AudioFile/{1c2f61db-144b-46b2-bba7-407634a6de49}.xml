@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{1c2f61db-144b-46b2-bba7-407634a6de49}">
+		<property name="assetPath">
+			<value>SFX/GamejamColdwar_Sounds_whistleStart.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.25</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{da4a489e-5994-4527-b3f8-b97005cc25bb}</destination>
+		</relationship>
+	</object>
+</objects>
